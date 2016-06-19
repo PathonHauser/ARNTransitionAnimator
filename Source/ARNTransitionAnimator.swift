@@ -299,6 +299,11 @@ extension ARNTransitionAnimator {
             case .Push:
                 self.fromVC.navigationController?.pushViewController(self.toVC, animated: true)
             case .Present:
+                if self.toVC.view.superview != nil {
+                    self.interactiveType = .Dismiss
+                    self.resetGestureTransitionSetting()
+                    break
+                }
                 self.fromVC.presentViewController(self.toVC, animated: true, completion: nil)
             case .Pop:
                 self.toVC.navigationController?.popViewControllerAnimated(true)
