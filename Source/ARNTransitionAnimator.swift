@@ -300,7 +300,8 @@ extension ARNTransitionAnimator {
                 self.fromVC.navigationController?.pushViewController(self.toVC, animated: true)
             case .Present:
                 if self.toVC.view.superview != nil {
-                    self.interactiveType = .Dismiss
+                    self.interactiveType = .None
+                    self.unregisterPanGesture()
                     self.resetGestureTransitionSetting()
                     break
                 }
